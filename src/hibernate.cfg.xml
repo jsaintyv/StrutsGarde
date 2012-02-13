@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="">
+  <property name="connection.useUnicode">true</property>
+  <property name="connection.characterEncoding">UTF-8</property>
+  <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="connection.url">jdbc:mysql://srvgarde:3306/garde</property>
+  <property name="connection.username">garde</property>
+  <property name="connection.password">sante11</property>  
+  <property name="autoReconnect">true</property>
+  <property name="maxReconnects">9999</property>  
+  <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="current_session_context_class">thread</property>
+  <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+  <mapping resource="strutsbase/model/user.hbm.xml"/>  
+  <mapping resource="strutsbase/model/group.hbm.xml"/>
+  <mapping resource="strutsbase/model/registry.hbm.xml"/>  
+  <mapping resource="org/garde/model/personnel.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

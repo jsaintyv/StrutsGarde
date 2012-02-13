@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.2.dtd">
+
+<struts>
+   <include file="struts-default.xml"/>
+     <package name="default" extends="struts-default">
+     	
+   	  <action name="connexion" method="connexion" class="strutsbase.action.ConnexionAction">
+            <result name="success" type="redirectAction">showPlanningAstreintes</result>            
+            <result name="login">/resources/connexion.jsp</result>
+        </action>
+        
+        <!-- Visualisation d'activite -->
+         <action name="mainView" method="mainView" class="org.garde.actions.MainActions">
+            <result name="success">/resources/mainView.jsp</result>            
+        </action>
+        
+        <action name="deleteActivite" method="deleteActivite" class="org.garde.actions.MainActions">
+            <result name="success" type="redirectAction">mainView</result>
+            <result name="connect"  type="redirectAction" >connexion</result>                        
+        </action>
+        
+        <action name="JSONActiviteList" method="jsonActiviteList" class="org.garde.actions.MainActions">
+            <result name="success">/resources/JSONActiviteList.jsp</result>
+        </action>
+        
+        <!-- Edition d'activite -->
+        <action name="ajouterActivite" method="newActivite" class="org.garde.actions.EditActiviteAction">
+            <result name="success">/resources/editActivite.jsp</result>
+            <result name="connect"  type="redirectAction" >connexion</result>            
+        </action>
+        
+        <action name="loadActivite" method="loadActivite" class="org.garde.actions.EditActiviteAction">
+            <result name="success">/resources/editActivite.jsp</result>
+            <result name="connect"  type="redirectAction" >connexion</result>            
+        </action>
+        
+        <action name="saveActivite" method="saveActivite" class="org.garde.actions.EditActiviteAction">
+            <result name="success" type="redirectAction">mainView</result>            
+        </action>
+        
+        <!-- Visualisation de personnel -->
+       <action name="showPersonnel" method="showPersonnel" class="org.garde.actions.ShowPersonnelsAction">
+       		<result name="success">/resources/showPersonnels.jsp</result>                        
+        </action>
+        
+        <action name="JSONPersonnelList" method="jsonPersonnelList" class="org.garde.actions.ShowPersonnelsAction">
+            <result name="success">/resources/JSONPersonnelList.jsp</result>
+        </action>
+        
+        <!-- Edition du personnel -->
+        <action name="addPersonnel" method="newPersonnel" class="org.garde.actions.EditPersonnelAction">
+            <result name="success">/resources/editPersonnel.jsp</result>
+            <result name="connect"  type="redirectAction" >connexion</result>            
+        </action>
+        
+        <action name="loadPersonnel" method="loadPersonnel" class="org.garde.actions.EditPersonnelAction">
+            <result name="success">/resources/editPersonnel.jsp</result>
+            <result name="connect"  type="redirectAction" >connexion</result>            
+        </action>
+        
+        <action name="savePersonnel" method="savePersonnel" class="org.garde.actions.EditPersonnelAction">
+            <result name="success" type="redirectAction">showPersonnel</result>            
+        </action>
+
+		<action name="ajouterActiviteAuPersonnel" method="ajouterActiviteAuPersonnel" class="org.garde.actions.EditPersonnelAction">
+        	<result name="success">/resources/editPersonnel.jsp</result>        	
+        </action>
+        
+        <action name="supprimerActiviteAuPersonnel" method="supprimerActiviteAuPersonnel" class="org.garde.actions.EditPersonnelAction">
+        	<result name="success">/resources/editPersonnel.jsp</result>
+        </action>
+        
+        
+        <action name="JSONActiviteListDropDown" method="jsonActiviteListDropDown" class="org.garde.actions.EditPersonnelAction">
+            <result name="success">/resources/JSONActiviteListDropDown.jsp</result>
+        </action>
+                
+        <!-- showPlanningAstreintes -->
+       <action name="showPlanningAstreintes" method="showPlanningAstreintes" class="org.garde.actions.ShowPlanningAstreintesAction">
+       		<result name="success">/resources/showPlanningAstreintes.jsp</result>                        
+        </action>
+        
+        <action name="JSONPlanningAstreinteCellule" method="jsonPlanningAstreinteCellule" class="org.garde.actions.ShowPlanningAstreintesAction">
+       		<result name="success">/resources/JSONPlanningAstreinteCellule.jsp</result>                        
+       		<result name="error">/resources/errordiv.jsp</result>
+        </action>
+        
+        <action name="JSONPlanningAstreinteCelluleSuppression" method="jsonSuppressionAstreinte" class="org.garde.actions.ShowPlanningAstreintesAction" >
+       		<result name="success">/resources/JSONPlanningAstreinteCellule.jsp</result>                        
+       		<result name="error">/resources/errordiv.jsp</result>
+        </action>
+        
+        <action name="JSONAffectationsListDropDown" method="jsonAffectations" class="org.garde.actions.ShowPlanningAstreintesAction">
+       		<result name="success">/resources/JSONAffectationsListDropDown.jsp</result>                        
+        </action>
+                
+        <action name="editPlanningAstreinte" method="editPlanningAstreinte" class="org.garde.actions.ShowPlanningAstreintesAction">
+       		<result name="success">/resources/editPlanningAstreintes.jsp</result>                        
+       		<result name="connect"  type="redirectAction" >connexion</result>
+        </action>        
+     </package>
+</struts>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.garde.model.Personnel" table="personnel">
+		<id column="personnelId" length="10" name="personnelId" type="integer">
+			<generator class="native" />
+		</id>
+		<property generated="never" lazy="false" length="254" name="titre"
+			type="string" />
+		<property generated="never" lazy="false" length="254" name="nom"
+			type="string" />
+		<property generated="never" lazy="false" length="254" name="prenom"
+			type="string" />
+		<property generated="never" lazy="false" length="254" name="telMobile"
+			type="string" />
+		<property generated="never" lazy="false" length="254" name="telPerso"
+			type="string" />
+		<property generated="never" lazy="false" length="254" name="telPro"
+			type="string" />
+		<property generated="never" lazy="false" length="254" name="commentaire"
+			type="string" />
+		
+		<set lazy="false" name="affectations" sort="unsorted" table="personnel_affectations">
+   			<key column="personnelId"/>
+   			<many-to-many class="org.garde.model.Activite" column="activiteId" />
+  		</set>
+	</class>
+	
+	<class name="org.garde.model.Activite" table="activite">
+		<meta attribute="class-code">
+			private static final long serialVersionUID = 1L;
+			
+			public String toString() {
+				return getNom();
+			}
+			
+			
+		</meta>
+		
+		<meta attribute="use-in-tostring">getNom();</meta>
+	
+		<id column="activiteId" length="10" name="activiteId" type="integer">
+			<generator class="native" />
+		</id>
+		<property generated="never" lazy="false" length="254" name="nom"
+			type="string" />
+	</class>
+	
+	<class name="org.garde.model.Astreinte" table="astreinte">
+		<id column="astreinteId" length="10" name="astreinteId" type="integer">
+			<generator class="native" />
+		</id>
+		<property column="debut" generated="never" lazy="false"
+			name="debut" type="timestamp" />
+		<property column="fin" generated="never" lazy="false"
+			name="fin" type="timestamp" />
+		<many-to-one name="activite" class="org.garde.model.Activite" lazy="false"></many-to-one>					
+		<many-to-one name="personnel" class="org.garde.model.Personnel" lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>

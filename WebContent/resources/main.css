@@ -1,0 +1,205 @@
+html, body  {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    color: black;
+    background-color: white;
+    font-family: Verdana, Arial, sans-serif;
+    font-size:13px;
+}
+.titleDiv {
+    background-color: #EFFBEF;
+    font-weight:bold;
+    font-size:18px;
+    text-align:left;
+    padding-left:10px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border:2px solid #8F99EF;
+}
+h1 { font-weight:bold; color: brown; font-size:15px; text-align:center;}
+
+
+
+.even { background-color: #EFFBEF; }
+.odd { background-color: white; }
+
+.nowrap { white-space:nowrap; }
+
+td { font-size:13px; padding-right:10px; }
+th { text-align:left; font-weight:bold; font-size:14px; padding-right:10px; }
+.tdLabel { font-weight: bold;}
+
+A { color:#4A825A; text-decoration:none;}
+A:link { text-decoration:none;}
+A:visited { text-decoration:none;}
+A:hover { text-decoration:none; color: red;}
+
+.borderAll {
+    border: 2px solid #8F99EF;width:90%;
+}
+
+.butStnd {
+    font-family:arial,sans-serif;
+    font-size:11px;
+    width:105px;
+    background-color:#DCDFFA ;color:#4A825A;font-weight:bold;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+.errorSection {
+    padding-left:18px;
+    padding-top:2px;
+    padding-bottom:10px;
+    padding-right:5px;
+}
+
+span.label {
+	font-weight: bold;
+}
+
+span.labelLeft {
+	width: 35%;	
+	font-weight: bold;
+	text-align: right;	
+	float:left;
+}
+
+span.field {
+		
+	font-weight: bold;
+	text-align: left;
+		
+}.perTelPro,.perTelPerso
+
+div.ligne {
+	clear:both;
+	display: block;
+}
+
+#messageAlertError {
+	position: absolute;
+	left:2%;
+	top:10%;
+	width: 96%;
+	border: 1px solid;.perTelPro,.perTelPerso
+}
+
+
+#column1sur3 {
+	position: absolute;
+	left:1%;
+	top:15%;
+	width: 32%;
+	border: 1px solid;
+}
+
+#column2sur3 {
+	position: absolute;
+	left:34%;
+	top:15%;
+	width: 32%;
+	border: 1px solid;
+}
+
+#column3sur3 {
+	position: absolute;
+	left:67%;
+	top:15%;
+	width: 32%;
+	border: 1px solid;
+}
+
+#barButton {
+	position: absolute;
+	left:0%;
+	top:90%;
+	width: 100%;
+	text-align: center;
+}
+
+.feu2 {
+	background-image: url("feuvert.png");
+	background-repeat: no-repeat;
+	width: 32px;
+	min-height:32px;
+	height: 32px; 
+}
+
+.feu1 {
+	background-image: url("feuorange.png");
+	background-repeat: no-repeat;
+	width: 32px;
+	min-height:32px;
+	height: 32px;
+}
+
+.feu0 {
+	background-image: url("feurouge.png");
+	background-repeat: no-repeat;
+	width: 32px;
+	min-height:32px;
+	height: 32px;
+}
+
+.feu-1 {
+	background-image: url("feuvide.png");
+	background-repeat: no-repeat;
+	width: 32px;
+	min-height:32px;
+	height: 32px;
+}
+
+table.astreinte {
+	
+	text-align: center;
+}
+
+table.astreinte,table.astreinte tr,table.astreinte tr , table.astreinte td , table.astreinte th  {
+	border-color: black;
+	border-style: solid;
+	border-top:1px;
+	border-bottom:1px;
+	border-left:0px;
+	border-right:0px;
+}
+
+.coldate {
+	width: 100px;
+}
+
+.colactivite {
+	width: 200px;
+}
+
+.colEditActivite {
+	
+	text-align: center;
+}
+
+.perNom, .perPrenom {
+	width:150px;
+}
+
+.perTelMobile, .perTelPro,.perTelPerso {
+	width:160px;
+}
+
+.astreinteDe, .astreinteA {
+	width:90px;
+}
+
+tr.astreinte td {
+	vertical-align: top;
+	
+	border-color: black;
+	border-style: solid;
+	border-top-width:1px;
+	border-bottom-width:1px;
+	border-left-width:0px;
+	border-right-width:0px;
+	
+}

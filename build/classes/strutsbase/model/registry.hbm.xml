@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="strutsbase.Registry" table="registries">
+     <id
+        name="registryId"
+        type="integer"
+        column="registryId"
+        length="10"
+       >
+        <generator class="native" />
+    </id>
+    <property
+        name="label"
+        type="string"
+        column="label"
+        length="256"
+    />    
+    <property
+        name="scope"
+        type="integer"
+        column="scope"        
+    />    
+    <property
+        name="scopeKey"
+        type="string"
+        column="scopeKey"
+        length="256"
+    />    
+    <property
+        name="value"
+        type="string"
+        column="value"
+        length="256"
+    />
+</class>
+</hibernate-mapping>
