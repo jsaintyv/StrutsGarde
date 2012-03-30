@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="strutsbase.Log" table="log">
+		<meta attribute="class-code">private static final long serialVersionUID = 1L;</meta>
+		
+		<id name="logId" type="integer" unsaved-value="null">
+			<column name="logId" sql-type="integer"
+				not-null="true" />
+			<generator class="native"></generator>
+		</id>		
+		<property name="jour" type="timestamp">			
+		</property>
+		<property name="ip" type="string">
+			<column name="ip" sql-type="char(254)" not-null="false" />
+		</property>
+		<property name="user" type="string">
+			<column name="user" sql-type="char(254)" not-null="false" />
+		</property>
+		<property name="label" type="text" />			
+		
+	</class>
+</hibernate-mapping>
