@@ -17,6 +17,8 @@
   <mapping resource="strutsbase/model/user.hbm.xml"/>  
   <mapping resource="strutsbase/model/group.hbm.xml"/>
   <mapping resource="strutsbase/model/registry.hbm.xml"/>  
+  <mapping resource="strutsbase/model/log.hbm.xml"/>
   <mapping resource="org/garde/model/personnel.hbm.xml"/>
+  
  </session-factory>
 </hibernate-configuration>

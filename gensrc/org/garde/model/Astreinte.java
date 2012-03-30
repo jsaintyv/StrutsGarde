@@ -1,6 +1,6 @@
 package org.garde.model;
 
-// Generated 26 janv. 2012 14:00:05 by Hibernate Tools 3.4.0.CR1
+// Generated 28 mars 2012 11:32:37 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 

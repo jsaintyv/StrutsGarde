@@ -50,9 +50,7 @@
 						<s:param name="activiteIdToHandle" value="activiteId" />
 						<s:param name="personnel.personnelId"
 							value="#request.personnel.personnelId" />
-					</s:url> <s:a href="%{supprimerActiviteAuPersonnel}">
-					Supprimer
-				</s:a></li>
+					</s:url> <s:a href="%{supprimerActiviteAuPersonnel}">Supprimer</s:a></li>
 			</s:iterator>
 		</ul>
 		<div>

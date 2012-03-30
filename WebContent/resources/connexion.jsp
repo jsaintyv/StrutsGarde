@@ -21,7 +21,7 @@
          </tr>
         <tr>
             <td class="tdLabel"><s:text name="label.password"/></td>
-                            <td><s:textfield name="user.passwordmd5" size="30"/></td>
+                            <td><s:password name="user.passwordmd5"  size="30"/></td>
         </tr>
        
         <tr>

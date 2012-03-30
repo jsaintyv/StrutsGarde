@@ -45,6 +45,9 @@
 		</id>
 		<property generated="never" lazy="false" length="254" name="nom"
 			type="string" />
+			
+		<property generated="never" lazy="false" name="comment"
+			type="string" />	
 	</class>
 	
 	<class name="org.garde.model.Astreinte" table="astreinte">

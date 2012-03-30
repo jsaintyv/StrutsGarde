@@ -1,16 +1,19 @@
 package strutsbase.action;
 
 import java.security.MessageDigest;
+import java.util.GregorianCalendar;
 import java.util.Map;
 
 import strutsbase.User;
+import strutsbase.dao.LogDao;
+import strutsbase.dao.RegistryDao;
 import strutsbase.dao.UserDao;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ConnexionAction extends ActionSupport {
-
+	
 	/**
 	 * 
 	 */
@@ -51,6 +54,7 @@ public class ConnexionAction extends ActionSupport {
 					}
 				}
 			}
+			System.out.println(sb.toString());
 			user.setPasswordmd5(sb.toString());
 		}
 		System.out.println(user.getLogin() + " " + user.getPasswordmd5());
@@ -92,5 +96,18 @@ public class ConnexionAction extends ActionSupport {
 		if(user == null) return false;	
 		return user.getLogin().equals("admin");
 	}
+
+	public static void log(String message) {
+		GregorianCalendar gc = new GregorianCalendar();
+		String date = gc.get(GregorianCalendar.DAY_OF_MONTH) + "/" + (gc.get(GregorianCalendar.MONTH) + 1) + "/" + (gc.get(GregorianCalendar.YEAR) );  
+		String userName = "";
+		User user = getLoggedUser();
+		if(user != null) {
+			userName = user.getLogin();
+		}
+		System.out.println("LOG " + date + " - " + userName + " - " + message);
+		
+	}
+	
 
 }

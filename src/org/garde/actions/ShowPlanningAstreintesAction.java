@@ -28,8 +28,7 @@ import strutsbase.util.DateUtil;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.inject.Context;
 
-public class ShowPlanningAstreintesAction implements ServletRequestAware,
-		ServletResponseAware {
+public class ShowPlanningAstreintesAction extends AbstractStrutsAction {
 	private String selectedTab = "PlanningAstreintes";
 
 	private List<DayAstreinte> listDayAstreintes;
@@ -47,6 +46,43 @@ public class ShowPlanningAstreintesAction implements ServletRequestAware,
 	private String formAction;
 	
 	private Boolean activiteGere = Boolean.FALSE;
+	
+	private String heureDebut;
+	private String minuteDebut;
+	private String heureFin;
+	public String getMinuteDebut() {
+		return minuteDebut;
+	}
+
+	public void setMinuteDebut(String minuteDebut) {
+		this.minuteDebut = minuteDebut;
+	}
+
+	public String getMinuteFin() {
+		return minuteFin;
+	}
+
+	public void setMinuteFin(String minuteFin) {
+		this.minuteFin = minuteFin;
+	}
+
+	private String minuteFin;
+
+	public String getHeureDebut() {
+		return heureDebut;
+	}
+
+	public void setHeureDebut(String heureDebut) {
+		this.heureDebut = heureDebut;
+	}
+
+	public String getHeureFin() {
+		return heureFin;
+	}
+
+	public void setHeureFin(String heureFin) {
+		this.heureFin = heureFin;
+	}
 
 	public Boolean getActiviteGere() {
 		return activiteGere;
@@ -95,8 +131,7 @@ public class ShowPlanningAstreintesAction implements ServletRequestAware,
 		this.astreinteId = astreinteId;
 	}
 
-	private HttpServletRequest request;
-	private HttpServletResponse response;
+	
 
 	public String getHoraires() {
 		return horaires;
@@ -328,7 +363,7 @@ public class ShowPlanningAstreintesAction implements ServletRequestAware,
 
 			GregorianCalendar gcNextDay = new GregorianCalendar();
 			gcNextDay.setTime(cellDate);
-			gcNextDay.add(GregorianCalendar.HOUR, 24);
+			gcNextDay.add(GregorianCalendar.HOUR_OF_DAY, 24);
 			Date end = gcNextDay.getTime();
 			Activite activite = activiteDao.findById(cellActiviteId);
 
@@ -344,55 +379,19 @@ public class ShowPlanningAstreintesAction implements ServletRequestAware,
 							+ cellActiviteId;
 
 					String personnel = request.getParameter(paramId);
-
-					Astreinte astreinte = new Astreinte();
+					Personnel personnelObj = null;
 					if (personnel.equals("")) {
 						System.out.println("PersonnelNom:" + personnelNom);
 						List<Personnel> listPersonnel = personnelDao
-								.getPersonnelParLeNom(personnelNom);
-						
-						astreinte.setPersonnel(listPersonnel.get(0));
+						.getPersonnelParLeNom(personnelNom);
+				
+						personnelObj = listPersonnel.get(0);	
 					} else {
-						astreinte.setPersonnel(personnelDao
-								.findById(new Integer(personnel)));
+						personnelObj =personnelDao
+						.findById(new Integer(personnel));
 					}
-
-					if (astreinte.getPersonnel() != null) {
-						astreinte.setActivite(activite);
-
-						if (horaires.equals("8h à 8h")) {
-							GregorianCalendar gcDeb = cloneEtFixeHeure(gcDay, 8);
-
-							GregorianCalendar gcEnd = cloneEtFixeHeure(gcDay, 8);
-							gcEnd.add(GregorianCalendar.DAY_OF_YEAR, 1);
-
-							astreinte.setDebut(gcDeb.getTime());
-							astreinte.setFin(gcEnd.getTime());
-						} else if (horaires.equals("8h à 14h")) {
-							GregorianCalendar gcDeb = cloneEtFixeHeure(gcDay, 8);
-							GregorianCalendar gcEnd = cloneEtFixeHeure(gcDay,
-									14);
-
-							astreinte.setDebut(gcDeb.getTime());
-							astreinte.setFin(gcEnd.getTime());
-
-						} else if (horaires.equals("14h à 20h")) {
-							GregorianCalendar gcDeb = cloneEtFixeHeure(gcDay,
-									14);
-							GregorianCalendar gcEnd = cloneEtFixeHeure(gcDay,
-									20);
-							astreinte.setDebut(gcDeb.getTime());
-							astreinte.setFin(gcEnd.getTime());
-						} else if (horaires.equals("20h à 8h")) {
-							GregorianCalendar gcDeb = cloneEtFixeHeure(gcDay,
-									20);
-							GregorianCalendar gcEnd = cloneEtFixeHeure(gcDay, 8);
-							gcEnd.add(GregorianCalendar.DAY_OF_YEAR, 1);
-							astreinte.setDebut(gcDeb.getTime());
-							astreinte.setFin(gcEnd.getTime());
-						}
-						astreinteDao.save(astreinte);
-					}
+					
+				 	astreinteDao.createAstreinte(gcDay, activite, personnelObj,horaires,heureDebut,minuteDebut,heureFin,minuteFin);
 				} catch (Exception e) {					
 					e.printStackTrace();
 				}
@@ -408,14 +407,7 @@ public class ShowPlanningAstreintesAction implements ServletRequestAware,
 		return "success";
 	}
 
-	public GregorianCalendar cloneEtFixeHeure(GregorianCalendar gcDay, int hour) {
-		GregorianCalendar gc = (GregorianCalendar) gcDay.clone();
-		gc.set(GregorianCalendar.HOUR, hour);
-		gc.set(GregorianCalendar.MINUTE, 0);
-		gc.set(GregorianCalendar.SECOND, 0);
-		gc.set(GregorianCalendar.MILLISECOND, 0);
-		return gc;
-	}
+	
 
 	public String getMessage(String key) {
 		MessageResources res = (MessageResources) ActionContext.getContext()
@@ -506,11 +498,7 @@ public class ShowPlanningAstreintesAction implements ServletRequestAware,
 		public List<Astreinte> getList(Activite activite) {
 
 			List<Astreinte> list = astreinteDao.getAstreintes(activite, begin,
-					end);
-			System.out.println("Activite " + activite.getNom() + " du "
-					+ getInDay(begin) + " " + getInHour(begin) + " à "
-					+ getInDay(end) + " " + getInHour(end) + " nb:"
-					+ list.size());
+					end);			
 			return list;
 		}
 
@@ -524,25 +512,9 @@ public class ShowPlanningAstreintesAction implements ServletRequestAware,
 		return day.getList(activite);
 	}
 
-	@Override
-	public void setServletResponse(HttpServletResponse arg0) {
-		this.response = arg0;
+	
 
-	}
-
-	public void setServletRequest(HttpServletRequest arg0) {
-		this.request = arg0;
-
-		System.out.println("<parameters " + arg0.getMethod() + " - "
-				+ arg0.getRequestURI() + "?" + arg0.getQueryString() + ">");
-		Enumeration en = request.getParameterNames();
-		while (en.hasMoreElements()) {
-			String name = (String) en.nextElement();
-			System.out.println(name + "=" + request.getParameter(name));
-
-		}
-		System.out.println("</parameters>");
-	}
+	
 
 	public String getCellDateTime() {
 		return "" + cellDate.getTime();

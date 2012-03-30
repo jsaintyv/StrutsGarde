@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.garde.dao.ActiviteDao;
 import org.garde.dao.AstreinteDao;
@@ -26,7 +27,8 @@ public class MainActions {
 
 	public String getNow() {
 		GregorianCalendar gc =new GregorianCalendar();
-		return DateUtil.getLongFrenchDate(gc) + " à  " + DateUtil.getHour(gc); 
+		
+		return DateUtil.getLongFrenchDate(gc) + " à  " + DateUtil.getHour(gc) +  " - "  + TimeZone.getDefault().getID(); 
 		
 	}
 
@@ -98,8 +100,7 @@ public class MainActions {
 	
 	AstreinteDao astreinteDao = new AstreinteDao();
 	
-	public List<Astreinte> getObtenirPour(String activiteId) {
-		System.out.println("plop obtenir : "  + activiteId);
+	public List<Astreinte> getObtenirPour(String activiteId) {		
 		Activite activite = activiteDao.findById(new Integer(activiteId));
 		GregorianCalendar gcDay = new GregorianCalendar();
 		GregorianCalendar gcNextDay;

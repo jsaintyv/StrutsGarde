@@ -21,15 +21,15 @@
 					<s:property value="nom" />
 				</s:a></td>
 			<td>
-			
-				<table>
-				<s:iterator value="%{getObtenirPour(activiteId)}" var="astreinte">
-					<tr class='astreinte'>
+				<s:property value="comment"/>				
+				<table class='activiteAstreinte'>
+				<s:iterator value="%{getObtenirPour(activiteId)}" var="astreinte" status="status2">
+					<tr class="<s:if test="#status2.even">astreinteeven</s:if><s:else>astreinteodd</s:else>">					
 						<td class='perNom'><s:property value="#astreinte.personnel.nom" /> <s:property value="#astreinte.personnel.prenom" />&nbsp;</td>
-					
+						<td class='perTelPerso'><s:property value="#astreinte.personnel.telPerso" />&nbsp;</td>
 						<td class='perTelMobile'><s:property value="#astreinte.personnel.telMobile" />&nbsp;</td>
 						<td class='perTelPro'><s:property value="#astreinte.personnel.telPro" />&nbsp;</td>
-						<td class='perTelPerso'><s:property value="#astreinte.personnel.telPerso" />&nbsp;</td>
+						
 						<td class='astreinteDe'>De <s:property value="%{getInHour(debut)}" />&nbsp;</td>
 						<td class='astreinteA'>A <s:property value="%{getInHour(fin)}" />&nbsp;</td>				
 					</tr>

@@ -192,14 +192,23 @@ table.astreinte,table.astreinte tr,table.astreinte tr , table.astreinte td , tab
 	width:90px;
 }
 
-tr.astreinte td {
+tr.astreinteodd {
 	vertical-align: top;
 	
-	border-color: black;
-	border-style: solid;
-	border-top-width:1px;
-	border-bottom-width:1px;
-	border-left-width:0px;
-	border-right-width:0px;
+	background-color: #F0F0F0;
+	padding: 0 0 0 0;
+	border-width: 5px;	
+}
+
+tr.astreinteeven {
+	vertical-align: top;
 	
+	background-color:  #E0E0E0;	
+	border-width: 5px;
+	
+}
+
+table.activiteAstreinte {
+	padding-top: 5px;
+	padding-bottom: 5px;
 }

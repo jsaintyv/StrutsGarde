@@ -11,6 +11,7 @@ import org.garde.model.Personnel;
 import org.garde.model.SecurePersonnel;
 
 import strutsbase.action.ConnexionAction;
+import strutsbase.dao.LogDao;
 
 import com.opensymphony.xwork2.ActionContext;
 
@@ -61,7 +62,7 @@ public class EditPersonnelAction {
 	}
 
 	public String newPersonnel() {
-		if (!ConnexionAction.isAdmin()) {
+		if (!ConnexionAction.isLogged()) {
 			return "connect";
 		}
 		
@@ -89,7 +90,7 @@ public class EditPersonnelAction {
 	}
 
 	public String loadPersonnel() {
-		if (!ConnexionAction.isAdmin()) {
+		if (!ConnexionAction.isLogged()) {
 			return "connect";
 		}
 		
@@ -101,11 +102,14 @@ public class EditPersonnelAction {
 	}
 
 	public String savePersonnel() {
-		if (!ConnexionAction.isAdmin()) {
+		if (!ConnexionAction.isLogged()) {
 			return "connect";
 		}
 		
 		personnelDao.save(getPersonnel().directPersonnel());
+		ConnexionAction.log("Modification du personnel " + getPersonnel().getNom());
+		
+		LogDao.log("Modification du personnel " + getPersonnel().getNom() + " Pers:" + getPersonnel().getTelPerso() + " Mob:" + getPersonnel().getTelMobile());
 		return "success";
 	}
 

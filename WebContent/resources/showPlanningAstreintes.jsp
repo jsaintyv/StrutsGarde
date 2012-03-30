@@ -19,6 +19,13 @@ int unique = 0;
 
 </head>
 <body>
+
+
+
+
+
+
+
 	<div class="titleDiv">
 		<s:text name="application.title" />
 	</div>
@@ -51,7 +58,8 @@ int unique = 0;
 						<s:param name="monthDateAsString" value="monthDateAsString" />
 					 </s:url>
 					  
-					 <s:a href="%{editPlanning}"><s:property value="nom" /></s:a>
+					  
+					 <s:a href="%{editPlanning}" ><s:property value="nom" /></s:a>
 					 </th>
 				</s:iterator>
 			</tr>

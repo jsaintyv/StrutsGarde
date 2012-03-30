@@ -19,7 +19,7 @@ int unique = 0;
 
 </head>
 <body>
-	<div class="titleDiv">
+	<div class="titleDiv">Ajouter : h à h 
 		<s:text name="application.title" />
 	</div>
 
@@ -32,6 +32,13 @@ int unique = 0;
 				document.forms['filtreForm'].submit();
 				filtreForm
 			});
+
+			$.ajaxSetup({ 
+		        scriptCharset: "utf-8" , 
+		        contentType: "application/json; charset=utf-8"
+		});
+
+					
 		</script>
 		<s:form id="filtreForm">
 			<sx:datetimepicker name="monthDate" valueNotifyTopics="/value"></sx:datetimepicker>
@@ -84,20 +91,39 @@ int unique = 0;
 									<p>	
 									<s:hidden name="cellDateAsString" value='%{#dayAstreinte.time}' /> 
 									<s:hidden name="cellActiviteId" value="%{#request.cellActiviteId}" />
+									
+								<table>
+								<tr>
+									<td>	
 									Ajouter :
 									<input dojoType="struts:ComboBox"  dataUrl="<%=dataUrl%>" id="<%=cboId%>" autoComplete="true" keyName="<%=keyName%>"  name="personnelNom" loadOnType="true" loadMinimum="0" visibleDownArrow="true" />
 									<script language="JavaScript" type="text/javascript">djConfig.searchIds.push("<%=cboId%>");</script>
-								 
-																
+								 	</td>
+									<td>
+									<p>						
 								<sx:submit targets="%{divId}" name="horaires"  key="label.8a8" 
 									cssClass="butStnd" />
 								<sx:submit targets="%{divId}" name="horaires"  key="label.8a14"
 									cssClass="butStnd"  />										
 								<sx:submit targets="%{divId}" name="horaires" key="label.14a20"
 									cssClass="butStnd"  />	
+									<sx:submit targets="%{divId}" name="horaires"  key="label.8a13"
+									cssClass="butStnd"  />										
+								<sx:submit targets="%{divId}" name="horaires" key="label.13a20"
+									cssClass="butStnd"  />
 								<sx:submit targets="%{divId}" name="horaires" key="label.20a8"
 									cssClass="butStnd"  />
+									</p>
+									<p>
+								<s:textfield name="heureDebut" size="4" />h<s:textfield name="minuteDebut" size="4" />min
+								 à <s:textfield name="heureFin" size="4" />h<s:textfield name="minuteFin" size="4" />min 	
+								
+								<sx:submit targets="%{divId}" name="horaires" key="label.specifique"
+									cssClass="butStnd"  /></p>
+									</td>
+									</tr></table>	
 									</p>	
+									
 								</s:form>	
 								
 

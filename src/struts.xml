@@ -41,6 +41,14 @@
             <result name="success" type="redirectAction">mainView</result>            
         </action>
         
+        <action name="ajouterAstreinteToActivite" method="ajouterAstreinteToActivite" class="org.garde.actions.EditActiviteAction">
+            <result name="success">/resources/editActivite.jsp</result>            
+        </action>
+        
+        <action name="supprimerAstreinteFromActivite" method="supprimerAstreinteFromActivite" class="org.garde.actions.EditActiviteAction">
+            <result name="success">/resources/editActivite.jsp</result>            
+        </action>
+        
         <!-- Visualisation de personnel -->
        <action name="showPersonnel" method="showPersonnel" class="org.garde.actions.ShowPersonnelsAction">
        		<result name="success">/resources/showPersonnels.jsp</result>                        

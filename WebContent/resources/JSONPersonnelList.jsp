@@ -26,6 +26,7 @@
 				</s:url> <s:a href="%{loadPersonnel}">
 					<s:property value="nom" />
 				</s:a></td>
+		<td class="nowrap"><s:property value="prenom" /></td>				
 		<td class="nowrap"><s:property value="telPerso" /></td>		
 		<td class="nowrap"><s:property value="telMobile" /></td>
 		<td class="nowrap"><s:property value="telPro" /></td>
